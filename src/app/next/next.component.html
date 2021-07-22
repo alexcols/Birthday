@@ -1,1 +1,88 @@
-<p>next works!</p>
+<h2>Coming birthdays</h2>
+<br>
+    <section>
+        <div class="container">
+            <div>
+                <form [formGroup]="form" class="form-inline" (ngSubmit)="onKey()">
+                    <label for="bdaysOnPage">Number of coming birthdays:</label>                    
+                    <input class="form-control" 
+                    size="2" 
+                    formControlName="bdaysOnPage" 
+                    type="text"  
+                    title="Number of coming birthdays">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" 
+                    [disabled]="form.invalid 
+                    || form.controls['bdaysOnPage'].pristine 
+                    || form.controls['bdaysOnPage'].value === ''">Ok</button>
+                </form>
+            </div>
+    
+
+            <div class="next-bdays__wrapper">
+                <!-- <div class="col-12">
+                    <app-sort-ads></app-sort-ads>
+                </div> -->
+                <ul class="list-style-type">
+                    <li *ngFor="let bday of bdays; let i=index">
+                        <div class="col-12 next-list__bday">
+                        <a  href="" [routerLink]="['/edit', bday.id]">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5 ">
+                                    <div class="bdays__item">
+                                        <img *ngIf="bday.photoContent !== null" src="{{ShowImageFromBlob(bday)}}"/>
+                                        <img *ngIf="bday.photoContent === null" src="assets/img/placeholder.png"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-3 next-bdays__description-section">
+                                    <div class="row next-bdays__name">
+                                        {{bday.name}}
+                                    </div>
+                                    <div class="row next-bdays__second-name">
+                                        {{ bday.secondName}}
+                                    </div>
+                                    <p >
+                                    </p>
+                                
+                                </div>
+                               <div class="col-md-4">
+                                   <!-- <div class="row">
+                                       <div class="col-md-6">
+                                            <div class="product-list__date">
+                                                {{Ad.category.title}}
+                                            </div>
+                                           <div class="product-list__date">
+                                               {{Ad.createdAt | date :'dd-MM-yy hh:mm'}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="" *ngIf="Ad.owner.id==currentUser">
+                                                <button type="button" class="btn btn-primary btn-block box" (click)="edit(i)">Редактировать</button>
+                                            </div>
+                                            <br>
+                                            <div class="" *ngIf="Ad.owner.id==currentUser && Ad.status ==='Created'">
+                                                <button type="button" class="btn btn-danger btn-block box" (click)="delete(i)">Закрыть</button>
+                                            </div>
+                                        
+                                        </div>
+                                   </div> -->
+                                   <div class="row ">
+                                    <div class="">
+                                        <p>day {{ bday.day }}</p>
+                                        <p>month {{ bday.month }}</p>
+                                        <p *ngIf="bday.age !== null">age now {{ bday.age }}</p>
+                                     </div> 
+                                   </div>
+                               </div>                     
+                            </div>
+                        </a>
+
+                        </div>
+                    
+                    </li>
+                
+                </ul>
+            
+            </div>
+        </div>
+    </section>
+

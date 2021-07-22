@@ -1,0 +1,132 @@
+ul{
+    list-style-type:none;
+padding-left: 0px;
+    li{
+        margin-bottom: 10px;
+    }
+}
+
+
+
+strong{
+    margin-right: 30px;
+}
+
+.next-bdays__wrapper{
+    margin-top: 20px;
+}
+
+.next-list__bday{
+    
+    padding: 10px;
+    border-radius: 5px;
+    height: 120px;
+    a{
+        text-decoration: none;
+    }
+    &:hover{
+        background-color: aliceblue;
+        box-shadow:0 0 10px;
+    }
+}
+.next-bdays__description-section{
+    overflow: hidden; 
+}
+
+   
+
+.title{
+    margin-right: 30px;
+    font-weight: 900;
+}
+.description{
+    margin-right: 30px;
+}
+.next-bdays__section-title{
+    font-weight: 700;
+    font-size: 20px;
+    color: black;
+    margin: 0;
+}
+
+.product-list__wrapper-titles{
+    padding: 20px 0;
+    
+}
+
+.next-bdays__section-title{
+    display: flex;    
+    justify-content: center;
+}
+
+
+.next-bdays__second-name{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 20px; 
+    
+   //жесткая высота блока 
+    height: 50px;
+ 
+}
+
+.product-list__price{
+    display: flex;  
+    align-items: center;  
+    justify-content: right;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.next-bdays__name{
+    font-size: 20px;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+ //обрезание текста, если не помещается в 1 строку
+    white-space:nowrap;   
+    //overflow: hidden;     
+    text-overflow: ellipsis;
+
+    // &:hover{
+    //     color: red;
+    //     text-decoration: none;
+    // }
+
+}
+.product-list__date{
+    display: flex;
+    justify-content: center;
+
+    //position:static;
+   // bottom: 0;
+    // left:50%;
+}
+
+
+
+
+.product-list__pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.bdays__item{
+    width: 100px;
+    height: 100px;
+    color: black;
+    box-shadow: 0 0 5px;
+    padding: 5px;
+
+    //margin-bottom: 25px;
+
+    img{
+        width: 100%;
+        height: 90px;
+        object-fit: cover; 
+        padding: auto;
+        margin-bottom: 5px;
+    } 
+}

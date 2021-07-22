@@ -5,7 +5,7 @@ export interface Birthday{
     day: number;
     month: number;
     age: number;
-    photoName: string;
+    photoName?: string;
     photoType: string;
     photoContent: string;
 
