@@ -1,3 +1,4 @@
+import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
 import { ListComponent } from './list/list.component';
 import { NextComponent } from './next/next.component';
 import { NgModule } from '@angular/core';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent
+  },
+  {
+    path: 'add',
+    component: AddBirthdayComponent
   }
 ];
 

@@ -10,6 +10,9 @@ import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     NextComponent,
     ListComponent,
-    AddBirthdayComponent
+    AddBirthdayComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
