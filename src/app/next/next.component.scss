@@ -33,15 +33,6 @@ strong{
     overflow: hidden; 
 }
 
-   
-
-.title{
-    margin-right: 30px;
-    font-weight: 900;
-}
-.description{
-    margin-right: 30px;
-}
 .next-bdays__section-title{
     font-weight: 700;
     font-size: 20px;
@@ -49,35 +40,17 @@ strong{
     margin: 0;
 }
 
-.product-list__wrapper-titles{
-    padding: 20px 0;
-    
-}
-
-.next-bdays__section-title{
-    display: flex;    
-    justify-content: center;
-}
 
 
 .next-bdays__second-name{
     display: flex; 
     align-items: center;
-    justify-content: center;
+    //justify-content: center;
     font-size: 20px; 
     
    //жесткая высота блока 
     height: 50px;
  
-}
-
-.product-list__price{
-    display: flex;  
-    align-items: center;  
-    justify-content: right;
-    font-size: 30px;
-    margin-top: 20px;
-    margin-right: 20px;
 }
 
 .next-bdays__name{
@@ -96,22 +69,8 @@ strong{
     // }
 
 }
-.product-list__date{
-    display: flex;
-    justify-content: center;
-
-    //position:static;
-   // bottom: 0;
-    // left:50%;
-}
 
 
-
-
-.product-list__pagination{
-    display: flex;
-    justify-content: center;
-}
 
 .bdays__item{
     width: 100px;
@@ -129,4 +88,9 @@ strong{
         padding: auto;
         margin-bottom: 5px;
     } 
+}
+
+.next-birthdays__date{
+    font-weight: 500;
+    font-size: 16px;
 }

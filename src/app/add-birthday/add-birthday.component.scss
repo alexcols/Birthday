@@ -1,0 +1,22 @@
+
+.mainImg{
+    position: relative;
+    border: 1px solid #CCC;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    padding: 5px;
+    position: relative;
+
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        max-height: 100%;
+        max-width: 100%;
+        display: block;
+        margin: auto;
+    } 
+}

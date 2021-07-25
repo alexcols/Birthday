@@ -1,3 +1,4 @@
+import { EditComponent } from './edit/edit.component';
 import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
 import { ListComponent } from './list/list.component';
 import { NextComponent } from './next/next.component';
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddBirthdayComponent
+  },
+  {
+    path: 'edit/:id',
+    component: EditComponent,    
   }
 ];
 

@@ -25,15 +25,15 @@
                 <ul class="list-style-type">
                     <li *ngFor="let bday of bdays; let i=index">
                         <div class="col-12 next-list__bday">
-                        <a  href="" [routerLink]="['/edit', bday.id]">
+                       
                             <div class="row">
-                                <div class="col-lg-4 col-md-5 ">
+                                <div class=" col-md-2 col-sm-3">
                                     <div class="bdays__item">
                                         <img *ngIf="bday.photoContent !== null" src="{{ShowImageFromBlob(bday)}}"/>
                                         <img *ngIf="bday.photoContent === null" src="assets/img/placeholder.png"/>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-3 next-bdays__description-section">
+                                <div class="col-md-3 col-sm-4 next-bdays__description-section">
                                     <div class="row next-bdays__name">
                                         {{bday.name}}
                                     </div>
@@ -44,40 +44,25 @@
                                     </p>
                                 
                                 </div>
-                               <div class="col-md-4">
-                                   <!-- <div class="row">
-                                       <div class="col-md-6">
-                                            <div class="product-list__date">
-                                                {{Ad.category.title}}
-                                            </div>
-                                           <div class="product-list__date">
-                                               {{Ad.createdAt | date :'dd-MM-yy hh:mm'}}
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="" *ngIf="Ad.owner.id==currentUser">
-                                                <button type="button" class="btn btn-primary btn-block box" (click)="edit(i)">Редактировать</button>
-                                            </div>
-                                            <br>
-                                            <div class="" *ngIf="Ad.owner.id==currentUser && Ad.status ==='Created'">
-                                                <button type="button" class="btn btn-danger btn-block box" (click)="delete(i)">Закрыть</button>
-                                            </div>
-                                        
-                                        </div>
-                                   </div> -->
-                                   <div class="row ">
+                               <div class="col-md-4 col-sm-3 next-birthdays__date">                                   
+                                   
                                     <div class="">
-                                        <p>day {{ bday.day }}</p>
-                                        <p>month {{ bday.month }}</p>
+                                        <p>Birthday {{ bday.date | date:'dd-MM'}}</p>
+                                       
                                         <p *ngIf="bday.age !== null">age now {{ bday.age }}</p>
-                                     </div> 
-                                   </div>
-                               </div>                     
+                                     </div>                                    
+                                                                   
+                               </div> 
+                               <div class="col-md-2 col-sm-2">
+                                <button type="button" class="btn btn-danger btn-block box" (click)="onDelete(bday)">Delete</button>
+                                <button type="button" class="btn btn-warning btn-block box" 
+                                [routerLink]="['/edit', bday.id]"  >Edit</button>
+                            </div>                    
                             </div>
-                        </a>
+                        
 
                         </div>
-                    
+                       
                     </li>
                 
                 </ul>

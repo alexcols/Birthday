@@ -1,42 +1,57 @@
+<h2>Creating birthday</h2>
+<br>
 <section>
     <div class="offset-1 col-10">
+      <div class="col-6">
+        <app-datepicker (date)="dateCatcher($event)"></app-datepicker>
+      </div> 
+      
         
-        
-        <form [formGroup]="addBirthdayForm">
-            <div class="form-group">
-              <label for="NameInput">Name*</label>
-              <input type="text" class="form-control" id="NameInput" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <label for="SecondNameInput">Second Name</label>
-              <input type="text" class="form-control" id="SecondNameInput" placeholder="Second Name" [disabled]="true">
-            </div>
-            <app-datepicker (date)="dateCatcher($event)"></app-datepicker>
+      <div class="col-6">      
+        <form [formGroup]="addBirthdayForm" >
+          
+          
+          <div class="form-group">
+            <label for="NameInput">Name*</label>
+            <input type="text" class="form-control" id="NameInput" placeholder="Name" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="SecondNameInput">Second Name</label>
+            <input type="text" class="form-control" id="SecondNameInput" formControlName="secondName" placeholder="Second Name" >
+          </div>
+            
 
-            <div class="form-group">
-              <label for="MonthInput">Select month</label>
-              <select class="form-control" id="MonthInput"  formControlName="monthInput" >
-                <option [ngValue]="null" selected >Month</option>
-                <option *ngFor="let a of months; let i=index " [ngValue]="a">{{a.month}}</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+          <!-- Add photo -->
+          <div class="form-group">
+            <div class="row">
+              <div class="col-12 ">
+                <label for="image-ad">Load photo</label>
+              </div>
             </div>
-            <div class="form-group" >
-              <label for="DaysInput">Select day</label>
-              <select  class="form-control" id="DaysInput" formControlName="dayInput" [disabled]="true">
-                <option *ngFor="let d of days let i=index">{{d}}</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+            <div class="row" *ngIf="imagePreview">
+              <div class="col-6 mainImg">
+                <img [src]="imagePreview">                    
+              </div>
             </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+            <div class="row">
+              <div class="col-6">
+                <input formControlName="image"
+                type="file"
+                class="form-control"
+                id="image-ad" 
+                (change)="onFileUpload($event)" #selectFile
+                />
+              </div>
             </div>
-          </form>
+
+
+            </div>
+
+            <div class="offset-6 col-6">
+                <button type="button" class="btn btn-primary btn-block" (click)="onClick()" [disabled]="bbday === null || addBirthdayForm.invalid" >Create Birthday</button>
+            </div>
+        </form>
+      </div>
     </div>
 </section>

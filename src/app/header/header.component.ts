@@ -1,3 +1,4 @@
+import { BirthdayService } from './../services/birthday.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  bday:any;
+  constructor(private birthdayService: BirthdayService) { }
 
   ngOnInit(): void {
   }
+
+  // onGet(){
+  //   let sub= this.birthdayService.getBirthday(20)
+  //   .subscribe(b=>{this.bday=b;
+  //   console.log(this.bday)
+  //   });
+    
+  // }
 
 }

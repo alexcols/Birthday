@@ -1,3 +1,4 @@
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -7,6 +8,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.scss']
 })
+
+@UntilDestroy()
+
 export class DatepickerComponent implements OnInit {
 
   @Output()
@@ -19,15 +23,13 @@ export class DatepickerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.form.valueChanges.subscribe(val=>{
-      console.log('picker',val);
-            
+    this.form.valueChanges
+    .pipe(untilDestroyed(this))
+    .subscribe(val=>{                 
       if(val.datepicker.toString() !== "Invalid Date") {
-        this.date.emit(val.datepicker)
-      }
-    }
-    
-      )
+        this.date.emit(val.datepicker)       
+      }      
+    });
 
   }
 

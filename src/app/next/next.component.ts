@@ -17,8 +17,7 @@ import { PagedResponse } from '../models/PagedResponse';
 
 export class NextComponent implements OnInit {
 
-  sub: any;
-  birthdays:Observable<PagedResponse< Birthday>>;
+  
   bdays:Birthday[]=[];
   limit:number=5;
   form:FormGroup;
@@ -34,8 +33,7 @@ export class NextComponent implements OnInit {
           ]
         )
     });
-
-    this.birthdays = new Observable();
+    
   }
 
   ngOnInit(): void {
@@ -58,8 +56,20 @@ export class NextComponent implements OnInit {
     console.log('limit from form', Number(limit));
     this.limit=Number(limit);
     this.lim$.next(this.limit);
-    //this.birthdayServise.getNextBirthdays(this.limit);
   }
+
+  onDelete(bday:Birthday){
+    if(confirm("Are you sure to delete " + bday.name+"?")) {
+     this.birthdayServise.deleteBirthday(bday.id)
+    .pipe(untilDestroyed(this))
+    .subscribe(()=> this.lim$.next(this.limit)) ;
+    }    
+  }
+
+  onEdit(id:number){
+   
+  }
+
 
 }
 
