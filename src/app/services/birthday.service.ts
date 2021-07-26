@@ -11,14 +11,10 @@ import { PagedResponse } from '../models/PagedResponse';
 })
 export class BirthdayService {
 
-  public idBirthday: number = 0;
-
+  
   constructor(private http:HttpClient) { }
 
   postBirthday(bday:any){
-
-    console.log('bdayPostService', bday);
-    
     
     return this.http.post('/api/birthday/', bday);
   }
@@ -30,7 +26,7 @@ export class BirthdayService {
     )
   }
 
-  getBirthday(id:number | string):Observable<BirthdayRequest>{
+  getBirthday(id:number | string):Observable<Birthday>{
     console.log(id);
     
     return this.http.get<Birthday>(
@@ -44,7 +40,7 @@ export class BirthdayService {
     )
   }
 
-  editBirthday(bday:BirthdayRequest){
+  editBirthday(bday:any){
     return this.http.put('/api/birthday', bday);
   }
 

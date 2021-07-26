@@ -23,7 +23,7 @@ export class NextComponent implements OnInit {
   form:FormGroup;
   lim$: BehaviorSubject<number>= new BehaviorSubject(this.limit);
 
-  constructor(private birthdayServise:BirthdayService) { 
+  constructor(private birthdayService:BirthdayService) { 
     this.form=new FormGroup({
       bdaysOnPage: new FormControl(this.limit,        
           [        
@@ -38,7 +38,7 @@ export class NextComponent implements OnInit {
 
   ngOnInit(): void {
     this.lim$.pipe(  
-      switchMap(limit=>this.birthdayServise.getNextBirthdays(limit))  
+      switchMap(limit=>this.birthdayService.getNextBirthdays(limit))  
       )
       .pipe(untilDestroyed(this))
       .subscribe(b=>{
@@ -48,7 +48,7 @@ export class NextComponent implements OnInit {
 
   public ShowImageFromBlob(bday: Birthday) : string 
   {
-    return this.birthdayServise.ShowImageFromBlob(bday);
+    return this.birthdayService.ShowImageFromBlob(bday);
   } 
 
   onKey(){
@@ -60,7 +60,7 @@ export class NextComponent implements OnInit {
 
   onDelete(bday:Birthday){
     if(confirm("Are you sure to delete " + bday.name+"?")) {
-     this.birthdayServise.deleteBirthday(bday.id)
+     this.birthdayService.deleteBirthday(bday.id)
     .pipe(untilDestroyed(this))
     .subscribe(()=> this.lim$.next(this.limit)) ;
     }    

@@ -1,8 +1,8 @@
 export interface BirthdayRequest{
     id?: number;
-    Name?: string;
+    name?: string;
     secondName?: string;
-    Birthday?: Date; 
+    birthday?: string; 
     photoName?: string;
     photoType?: string;
     photoContent?: string;

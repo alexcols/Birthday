@@ -14,6 +14,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { EditComponent } from './edit/edit.component';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditComponent } from './edit/edit.component';
     ListComponent,
     AddBirthdayComponent,
     DatepickerComponent,
-    EditComponent
+    EditComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

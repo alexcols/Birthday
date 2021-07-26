@@ -1,6 +1,8 @@
+import { BirthdayService } from './../services/birthday.service';
+import { ActivatedRoute, Params } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 
 @Component({
@@ -16,12 +18,24 @@ export class DatepickerComponent implements OnInit {
   @Output()
   date:EventEmitter<Date>=new EventEmitter();
 
-  form = new FormGroup({
-    datepicker : new FormControl()
-  });
-  constructor() { }
+  @Input()
+  defaultValue: any;
 
-  ngOnInit(): void {
+  
+  today = new Date();
+  
+  form:FormGroup;
+  
+  constructor(private route: ActivatedRoute,
+    private birthdayService: BirthdayService) { 
+    
+     
+      this.form = new FormGroup({
+      datepicker : new FormControl()
+    });
+  }
+
+  ngOnInit(): void { 
 
     this.form.valueChanges
     .pipe(untilDestroyed(this))

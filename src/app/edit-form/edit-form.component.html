@@ -1,9 +1,8 @@
-<h2>Creating birthday</h2>
-<br>
 <section>
     <div class="offset-1 col-10">
       <div class="col-6">
-        <app-datepicker (date)="dateCatcher($event)" [defaultValue]="date"></app-datepicker>
+        <app-datepicker (date)="dateCatcher($event)" ></app-datepicker>
+        <p>Current Date value is {{date | date: 'MM/dd/yyy'}}</p>
       </div> 
       
         
@@ -13,7 +12,7 @@
           
           <div class="form-group">
             <label for="NameInput">Name*</label>
-            <input type="text" class="form-control" id="NameInput" placeholder="Name" formControlName="name">
+            <input type="text" class="form-control" id="NameInput"  formControlName="name" placeholder="Name">
           </div>
           <div class="form-group">
             <label for="SecondNameInput">Second Name</label>
@@ -28,6 +27,15 @@
                 <label for="image-ad">Load photo</label>
               </div>
             </div>
+
+            <div class="row" *ngIf="imagePreview == null && bbday !== null">
+                <div class="col-6 mainImg">
+                    <img *ngIf="bbday.photoContent !== null" src="{{ShowImageFromBlob(bbday)}}">
+                    <img *ngIf="bbday.photoContent ===  null" src="assets/img/placeholder.png">                        
+                  </div>
+              </div>
+            
+            
             <div class="row" *ngIf="imagePreview">
               <div class="col-6 mainImg">
                 <img [src]="imagePreview">                    
@@ -47,10 +55,15 @@
 
 
             </div>
-
-            <div class="offset-6 col-6">
-                <button type="button" class="btn btn-primary btn-block" (click)="onClick()" 
-                [disabled]="bbday === null || addBirthdayForm.invalid" >Create Birthday</button>
+            <div class="row">
+              <div class="offset-3 col-6">
+                <button type="button" class="btn btn-primary btn-block" 
+                (click)="onClick()" 
+                [disabled]="bbday === null || bbday.birthday === undefined || addBirthdayForm.invalid" >Change Birthday</button>              
+              </div>
+              <div class="col-3">
+                <button type="button" class="btn btn-outline-info" routerLink=''>Cancel</button>
+              </div>
             </div>
         </form>
       </div>

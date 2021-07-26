@@ -1,6 +1,6 @@
 
 import { BirthdayService } from './../services/birthday.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Router } from '@angular/router';
@@ -20,6 +20,9 @@ export class AddBirthdayComponent implements OnInit {
   selectedImageFile : File | any = null;
   imagePreview: any;
   bbday:any = null;
+  
+  
+  date = new Date();
  
   
 
@@ -39,8 +42,6 @@ export class AddBirthdayComponent implements OnInit {
         secondName: new FormControl(),
         image: new FormControl()
     });
-
-
    
   }
 

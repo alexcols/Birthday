@@ -1,8 +1,10 @@
+import { BirthdayRequest } from './../models/BirthdayRequest';
+import { BehaviorSubject } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BirthdayService } from './../services/birthday.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BirthdayRequest } from '../models/BirthdayRequest';
+
 
 @Component({
   selector: 'app-edit',
@@ -13,7 +15,8 @@ import { BirthdayRequest } from '../models/BirthdayRequest';
 @UntilDestroy()
 export class EditComponent implements OnInit {
 
-  birthday:any;
+  birthday:BirthdayRequest | any =null;
+ 
   id:number = 0;
   bsValue = new Date();
 
@@ -21,15 +24,6 @@ export class EditComponent implements OnInit {
     private route:ActivatedRoute,
     private birthdayService: BirthdayService) { }
 
-  ngOnInit(): void {
-    this.route.params
-    .pipe(untilDestroyed(this))
-    .subscribe((params:Params) => (
-      this.id=params.id      
-    ));
-    this.birthdayService.getBirthday(this.id)
-    .pipe(untilDestroyed(this))
-    .subscribe(b=>this.birthday=b)     
-  }
+  ngOnInit(): void {}   
 
 }
