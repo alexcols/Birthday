@@ -10,7 +10,7 @@ import { PagedResponse } from '../models/PagedResponse';
 })
 export class BirthdayService {
 
-    
+  public limitNext=5; 
   public limitDefault = 5;
   public params$:BehaviorSubject<any>= new BehaviorSubject({limit: this.limitDefault, offset: 0})
   public paginationTotal$:BehaviorSubject<number> = new BehaviorSubject(0);

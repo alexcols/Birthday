@@ -19,7 +19,7 @@ export class NextComponent implements OnInit {
 
   
   bdays:Birthday[]=[];
-  limit:number=5;
+  limit:number=this.birthdayService.limitNext;
   form:FormGroup;
   lim$: BehaviorSubject<number>= new BehaviorSubject(this.limit);
 
@@ -51,6 +51,7 @@ export class NextComponent implements OnInit {
     const limit=this.form.value.bdaysOnPage;    
     this.limit=Number(limit);
     this.lim$.next(this.limit);
+    this.birthdayService.limitNext=this.limit;
   }
 
   onDelete(bday:Birthday){

@@ -40,8 +40,7 @@ export class PaginationComponent implements OnInit {
     
     this.birthdayService.paginationTotal$
     .pipe(untilDestroyed(this))
-    .subscribe(t=>{
-      console.log('total pagination', t, this.page);      
+    .subscribe(t=>{            
       this.collectionSize=t
     });
    }
