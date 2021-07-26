@@ -12,17 +12,12 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./edit.component.scss']
 })
 
-@UntilDestroy()
+
 export class EditComponent implements OnInit {
 
-  birthday:BirthdayRequest | any =null;
  
-  id:number = 0;
-  bsValue = new Date();
 
-  constructor(
-    private route:ActivatedRoute,
-    private birthdayService: BirthdayService) { }
+  constructor( ) { }
 
   ngOnInit(): void {}   
 

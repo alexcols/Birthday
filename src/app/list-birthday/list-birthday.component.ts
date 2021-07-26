@@ -1,7 +1,5 @@
 import { Birthday } from './../models/BirthdayModel';
-import { BirthdayListParamsModel } from './../models/BirthdayListParamsModel';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -17,14 +15,15 @@ export class ListBirthdayComponent implements OnInit {
 
   @Input()
   bdays:Birthday[] | null=[];
-  limit:number= 100;
+  limit:number= this.birthdayService.limitDefault;
   offset:number = 0;
+  total:number = 100;
+  pageNumber:number =1;
   
-  params:BirthdayListParamsModel ={limit:this.limit, 
-    offset: this.offset};
-  params$: BehaviorSubject<BirthdayListParamsModel>= new BehaviorSubject(this.params);
-  //bList$:BehaviorSubject<Birthday[] | null>=new BehaviorSubject(this.bdays);
-
+  params={limit: this.limit, 
+          offset: this.offset};
+  params$: BehaviorSubject<any>= new BehaviorSubject(this.params);
+ 
   constructor(private birthdayService:BirthdayService) { 
     
   }
@@ -35,31 +34,42 @@ export class ListBirthdayComponent implements OnInit {
       )
       .pipe(untilDestroyed(this))
       .subscribe(b=>{
-        this.bdays=b.items      
-        
-      //this.birthdayService.bList$.next(b.items)
+        this.bdays=b.items,
+        this.total=b.total    
     });
-  
-    
-   
-  }
-
-  public ShowImageFromBlob(bday: Birthday) : string 
-  {
-    return this.birthdayService.ShowImageFromBlob(bday);
-  } 
+       
+  }  
 
 
   onDelete(bday:Birthday){
     if(confirm("Are you sure to delete " + bday.name+"?")) {
      this.birthdayService.deleteBirthday(bday.id)
     .pipe(untilDestroyed(this))
-    .subscribe(()=> {
-      
-      this.params$.next(this.params)
-      //this.bList$.next(this.bdays)
+    .subscribe(()=> {      
+      this.params$.next(this.params)     
     }) ;
     }    
   }  
+
+  onPageNumber(page:number){
+    this.params.offset=(page-1)*this.params.limit;
+    this.birthdayService.params$.next(this.params);
+    this.params$.next(this.params);  
+   
+
+  }
+
+  onPageSize(pageSize:number){
+    
+    this.params.limit=pageSize;
+    this.params.offset=0;
+    this.birthdayService.params$.next(this.params);
+    this.params$.next(this.params);  
+  }
+
+  public ShowImageFromBlob(bday: Birthday) : string 
+  {
+    return this.birthdayService.ShowImageFromBlob(bday);
+  } 
 
 }

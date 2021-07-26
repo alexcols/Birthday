@@ -1,5 +1,3 @@
-import { BirthdayService } from './../services/birthday.service';
-import { ActivatedRoute, Params } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -26,9 +24,7 @@ export class DatepickerComponent implements OnInit {
   
   form:FormGroup;
   
-  constructor(private route: ActivatedRoute,
-    private birthdayService: BirthdayService) { 
-    
+  constructor( ) {     
      
       this.form = new FormGroup({
       datepicker : new FormControl()

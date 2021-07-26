@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <p class="page-selection">Number of birthdays on a page</p>
+        <form [formGroup]="form" class="form-inline" (ngSubmit)="onKey()">
+            <input class="form-control " size="2" formControlName="bDaysOnPage" type="text"  title="Number of birthdays on a page">
+            <button class="btn btn-outline-primary my-2 my-sm-0" [disabled]="form.invalid 
+            || form.controls['bDaysOnPage'].pristine 
+            || form.controls['bDaysOnPage'].value === ''">Ok</button>
+        </form>
+            
+            <ngb-pagination class="pagination__wrapper"
+            [collectionSize]="collectionSize"
+            [(page)]="page" 
+            [pageSize]="pageSize"
+            [maxSize]="5" 
+            [rotate]="true" 
+            [ellipses]="false"
+            [boundaryLinks]="true"
+            (pageChange)="onPageChange($event)">
+        </ngb-pagination>
+    </div>
+  
+   
+</div>

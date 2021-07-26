@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NextComponent } from './next/next.component';
-import { ListComponent } from './list/list.component';
 import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,18 +14,19 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { EditComponent } from './edit/edit.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { ListBirthdayComponent } from './list-birthday/list-birthday.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NextComponent,
-    ListComponent,
+    NextComponent,    
     AddBirthdayComponent,
     DatepickerComponent,
     EditComponent,
     EditFormComponent,
-    ListBirthdayComponent
+    ListBirthdayComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,6 @@
-import { BirthdayListParamsModel } from './../models/BirthdayListParamsModel';
-import { BirthdayRequest } from './../models/BirthdayRequest';
 import { Birthday } from './../models/BirthdayModel';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-
 import {HttpClient} from '@angular/common/http';
 import { PagedResponse } from '../models/PagedResponse';
 
@@ -13,9 +10,10 @@ import { PagedResponse } from '../models/PagedResponse';
 })
 export class BirthdayService {
 
-  
-  public bList$:BehaviorSubject<Birthday[]>= new BehaviorSubject<Birthday[]>([]);
-  public params$:BehaviorSubject<BirthdayListParamsModel>= new BehaviorSubject<BirthdayListParamsModel>({limit: 100, offset: 0})
+    
+  public limitDefault = 5;
+  public params$:BehaviorSubject<any>= new BehaviorSubject({limit: this.limitDefault, offset: 0})
+  public paginationTotal$:BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor(private http:HttpClient) { }
 
@@ -31,15 +29,13 @@ export class BirthdayService {
     )
   }
   getListBirthdays():Observable<PagedResponse<Birthday>>{
-    this.params$.next({limit:100, offset:0})
+
     return this.http.get<PagedResponse<Birthday>>(
       `api/birthday?Limit=${this.params$.value.limit}&Offset=${this.params$.value.offset}`
-    )
-    
+    )    
   }
 
   getBirthday(id:number | string):Observable<Birthday>{
-    console.log(id);
     
     return this.http.get<Birthday>(
       `api/birthday/${id}`
@@ -47,16 +43,16 @@ export class BirthdayService {
   }
 
   deleteBirthday(id:number){
+
      return this.http.delete(
       `/api/birthday/${id}`
     )
   }
 
   editBirthday(bday:any){
+    
     return this.http.put('/api/birthday', bday);
   }
-
-
 
   public ShowImageFromBlob(bday: Birthday) : string 
   {

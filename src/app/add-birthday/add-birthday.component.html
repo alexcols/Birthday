@@ -47,12 +47,16 @@
 
 
             </div>
-
-            <div class="offset-6 col-6">
-                <button type="button" class="btn btn-primary btn-block" (click)="onClick()" 
-                [disabled]="bbday === null || addBirthdayForm.invalid" >Create Birthday</button>
+          <div class="row">
+            <div class="offset-3 col-6">
+              <button type="button" class="btn btn-primary btn-block" (click)="onClick()" 
+              [disabled]="bbday === null || addBirthdayForm.invalid" >Create Birthday</button>
             </div>
-        </form>
+            <div class="col-3">
+              <button type="button" class="btn btn-outline-info" routerLink=''>Cancel</button>
+            </div>
+          </div>
+          </form>
       </div>
     </div>
 </section>

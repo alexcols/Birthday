@@ -1,4 +1,3 @@
-
 import { BirthdayService } from './../services/birthday.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -15,12 +14,9 @@ import { Router } from '@angular/router';
 @UntilDestroy()
 export class AddBirthdayComponent implements OnInit {
 
-  // birthday:BirthdayRequest={};
-
   selectedImageFile : File | any = null;
   imagePreview: any;
   bbday:any = null;
-  
   
   date = new Date();
  
@@ -61,8 +57,6 @@ export class AddBirthdayComponent implements OnInit {
     if (this.selectedImageFile !== null)
     bday.append('Image', this.selectedImageFile, this.selectedImageFile.name);
    
-  
-    // this.birthday.Name = this.addBirthdayForm.value.name;
     this.birthdayService.postBirthday(bday)
     .pipe(untilDestroyed(this))
     .subscribe(()=> this.router.navigateByUrl(''));    
@@ -72,8 +66,6 @@ export class AddBirthdayComponent implements OnInit {
   dateCatcher(date:Date){    
     
     this.bbday = date.getFullYear()+'-'+ (date.getMonth()+1)+'-'+ date.getDate();
-   
-        
   }
 
   onFileUpload(event : any){

@@ -2,6 +2,8 @@
 <br>
     <section>
         <div class="container">
+
+            <!-- Number of birthdays -->
             <div>
                 <form [formGroup]="form" class="form-inline" (ngSubmit)="onKey()">
                     <label for="bdaysOnPage">Number of coming birthdays:</label>                    
@@ -19,9 +21,7 @@
     
 
             <div class="next-bdays__wrapper">
-                <!-- <div class="col-12">
-                    <app-sort-ads></app-sort-ads>
-                </div> -->
+               
                 <ul class="list-style-type">
                     <li *ngFor="let bday of bdays; let i=index">
                         <div class="col-12 next-list__bday">

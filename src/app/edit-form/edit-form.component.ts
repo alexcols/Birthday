@@ -6,7 +6,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BirthdayService } from '../services/birthday.service';
 
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-edit-form',
@@ -19,21 +18,17 @@ export class EditFormComponent implements OnInit {
 
   selectedImageFile : File | any = null;
   imagePreview: any =null;
-  
-  @Input()
+    
   bbday: BirthdayRequest | any = null;
 
   date:Date = new Date();  
 
-  
-
-  id:number =0;
+  id:number = 0;
  
-  
-
   addBirthdayForm:FormGroup;
     
-  constructor(private birthdayService: BirthdayService, 
+  constructor(
+    private birthdayService: BirthdayService, 
     private router: Router,
     private route: ActivatedRoute) { 
    
@@ -46,7 +41,12 @@ export class EditFormComponent implements OnInit {
         Validators.maxLength(25),
         Validators.pattern("[a-zA-Zа-яА-Я-_ 0-9]{1,}")
       ]),
-        secondName: new FormControl(),
+        secondName: new FormControl('',
+        [
+        Validators.minLength(2),
+        Validators.maxLength(25),
+        Validators.pattern("[a-zA-Zа-яА-Я-_ 0-9]{1,}")
+        ]),
         image: new FormControl()
     });
    
@@ -68,7 +68,6 @@ export class EditFormComponent implements OnInit {
       ))       
   }
  
-
   onClick(){
     const bday = new FormData();
     const formValue = this.addBirthdayForm.value;

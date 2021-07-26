@@ -1,11 +1,11 @@
 import { BirthdayService } from './../services/birthday.service';
 import { Birthday } from './../models/BirthdayModel';
 import { Component, OnInit } from '@angular/core';
-import { pipe, Observable, BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PagedResponse } from '../models/PagedResponse';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-next',
@@ -46,14 +46,9 @@ export class NextComponent implements OnInit {
    
   }
 
-  public ShowImageFromBlob(bday: Birthday) : string 
-  {
-    return this.birthdayService.ShowImageFromBlob(bday);
-  } 
 
   onKey(){
-    const limit=this.form.value.bdaysOnPage;
-    console.log('limit from form', Number(limit));
+    const limit=this.form.value.bdaysOnPage;    
     this.limit=Number(limit);
     this.lim$.next(this.limit);
   }
@@ -66,10 +61,11 @@ export class NextComponent implements OnInit {
     }    
   }
 
-  onEdit(id:number){
-   
-  }
-
+  
+  public ShowImageFromBlob(bday: Birthday) : string 
+  {
+    return this.birthdayService.ShowImageFromBlob(bday);
+  } 
 
 }
 
