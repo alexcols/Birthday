@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { EditComponent } from './edit/edit.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
+import { ListBirthdayComponent } from './list-birthday/list-birthday.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     AddBirthdayComponent,
     DatepickerComponent,
     EditComponent,
-    EditFormComponent
+    EditFormComponent,
+    ListBirthdayComponent
   ],
   imports: [
     BrowserModule,

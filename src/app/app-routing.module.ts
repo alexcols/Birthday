@@ -1,3 +1,4 @@
+import { ListBirthdayComponent } from './list-birthday/list-birthday.component';
 import { EditComponent } from './edit/edit.component';
 import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
 import { ListComponent } from './list/list.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'list',
-    component: ListComponent
+    component: ListBirthdayComponent
   },
   {
     path: 'add',
