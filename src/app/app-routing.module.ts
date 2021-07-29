@@ -1,3 +1,4 @@
+import { FindListComponent } from './find-list/find-list.component';
 import { ListBirthdayComponent } from './list-birthday/list-birthday.component';
 import { EditComponent } from './edit/edit.component';
 import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
@@ -26,7 +27,11 @@ const routes: Routes = [
   },
   {
     path: 'edit/:id',
-    component: EditComponent,    
+    component: EditComponent   
+  },
+  {
+    path: 'find',
+    component: FindListComponent
   }
 ];
 

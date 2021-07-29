@@ -2,9 +2,11 @@ import { Birthday } from './../models/BirthdayModel';
 import { BirthdayRequest } from './../models/BirthdayRequest';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, RouterEvent, NavigationEnd, RoutesRecognized } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BirthdayService } from '../services/birthday.service';
+import { filter, pairwise } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -24,13 +26,16 @@ export class EditFormComponent implements OnInit {
   date:Date = new Date();  
 
   id:number = 0;
+
+  previousUrl= this.birthdayService.previousUrl;
  
   addBirthdayForm:FormGroup;
     
   constructor(
     private birthdayService: BirthdayService, 
     private router: Router,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute
+    ) { 
    
     
     this.addBirthdayForm=new FormGroup({
@@ -49,10 +54,16 @@ export class EditFormComponent implements OnInit {
         ]),
         image: new FormControl()
     });
-   
+
+
+
   }
 
   ngOnInit(): void {
+
+
+   
+    
     this.route.params
     .pipe(untilDestroyed(this))
     .subscribe((params:Params) => (
@@ -87,7 +98,10 @@ export class EditFormComponent implements OnInit {
    
     this.birthdayService.editBirthday(bday)
     .pipe(untilDestroyed(this))
-    .subscribe(()=> this.router.navigateByUrl(''));    
+    .subscribe(
+      ()=> {     
+      this.router.navigateByUrl(this.previousUrl)      
+      });    
     
   }
 

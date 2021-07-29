@@ -1,0 +1,13 @@
+<h2>Found birthdays</h2>
+<p>sorted by name</p>
+<br>
+
+
+<app-birthday *ngIf="total > 0 "
+[bdays]= "bdays" 
+[total] = "total"
+(newListEmiter)="newParams(params)"></app-birthday>
+
+<p *ngIf="
+bdays ===null ||
+bdays.length === 0">Nothing found</p>

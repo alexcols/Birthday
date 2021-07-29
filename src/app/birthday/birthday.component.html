@@ -1,0 +1,61 @@
+
+<section>
+    <div class="container">    
+        <div class="next-bdays__wrapper">           
+            <ul class="list-style-type">
+                <li *ngFor="let bday of bdays; let i=index">
+                   
+                    <div class="col-12 next-list__bday">
+                   
+                        <div class="row">
+                            <div class=" col-md-2 col-sm-3">
+                                <div class="bdays__item">
+                                    <img *ngIf="bday.photoContent !== null" src="{{ShowImageFromBlob(bday)}}"/>
+                                    <img *ngIf="bday.photoContent === null" src="assets/img/placeholder.png"/>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-4 next-bdays__description-section">
+                                <div class="row next-bdays__name">
+                                    {{bday.name}}
+                                </div>
+                                <div class="row next-bdays__second-name">
+                                    {{ bday.secondName}}
+                                </div>
+                                <p >
+                                </p>
+                            
+                            </div>
+                           <div class="col-md-4 col-sm-3 next-birthdays__date">                                   
+                               
+                                <div class="">
+                                    <p>Birthday {{ bday.date | date:'dd-MM'}}</p>
+                                   
+                                    <p *ngIf="bday.age !== null">age now {{ bday.age }}</p>
+                                 </div>                                    
+                                                               
+                           </div> 
+                           <div class="col-md-2 col-sm-2">
+                            <button type="button" class="btn btn-danger btn-block box" (click)="onDelete(bday)">Delete</button>
+                            <button type="button" class="btn btn-warning btn-block box" 
+                            [routerLink]="['/edit', bday.id]"  >Edit</button>
+                        </div>                    
+                        </div>
+                    
+
+                    </div>
+                   
+                </li>
+            
+            </ul>
+        
+        </div>
+    </div>
+</section>
+<app-pagination 
+(pageNumber)="onPageNumber($event)"
+(pageSizeEmit)="onPageSize($event)"
+[collectionSize]="total"
+[page]="pageNumber"
+[pageSize]="limit"
+></app-pagination> 
+

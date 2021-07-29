@@ -15,6 +15,8 @@ import { EditComponent } from './edit/edit.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { ListBirthdayComponent } from './list-birthday/list-birthday.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { FindListComponent } from './find-list/find-list.component';
+import { BirthdayComponent } from './birthday/birthday.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PaginationComponent } from './pagination/pagination.component';
     EditComponent,
     EditFormComponent,
     ListBirthdayComponent,
-    PaginationComponent
+    PaginationComponent,
+    FindListComponent,
+    BirthdayComponent
   ],
   imports: [
     BrowserModule,

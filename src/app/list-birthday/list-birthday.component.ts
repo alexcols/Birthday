@@ -20,8 +20,10 @@ export class ListBirthdayComponent implements OnInit {
   total:number = 100;
   pageNumber:number =1;
   
-  params={limit: this.limit, 
-          offset: this.offset};
+  params={
+    limit: this.limit, 
+    offset: this.offset
+  };
   params$: BehaviorSubject<any>= new BehaviorSubject(this.params);
  
   constructor(private birthdayService:BirthdayService) { 
@@ -39,37 +41,13 @@ export class ListBirthdayComponent implements OnInit {
     });
        
   }  
+ 
 
 
-  onDelete(bday:Birthday){
-    if(confirm("Are you sure to delete " + bday.name+"?")) {
-     this.birthdayService.deleteBirthday(bday.id)
-    .pipe(untilDestroyed(this))
-    .subscribe(()=> {      
-      this.params$.next(this.params)     
-    }) ;
-    }    
-  }  
-
-  onPageNumber(page:number){
-    this.params.offset=(page-1)*this.params.limit;
-    this.birthdayService.params$.next(this.params);
-    this.params$.next(this.params);  
-   
-
-  }
-
-  onPageSize(pageSize:number){
+  newParams(params:any){
+    this.params$.next(params);  
     
-    this.params.limit=pageSize;
-    this.params.offset=0;
-    this.birthdayService.params$.next(this.params);
-    this.params$.next(this.params);  
   }
-
-  public ShowImageFromBlob(bday: Birthday) : string 
-  {
-    return this.birthdayService.ShowImageFromBlob(bday);
-  } 
+  
 
 }

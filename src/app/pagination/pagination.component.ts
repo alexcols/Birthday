@@ -20,7 +20,7 @@ export class PaginationComponent implements OnInit {
   
   bDaysListParams={
     limit: this.pageSize,
-    offset: 0    
+    offset: 1    
   }
 
   form:FormGroup=new FormGroup({
@@ -68,7 +68,7 @@ export class PaginationComponent implements OnInit {
   ngOnDestroy(){    
     
      this.bDaysListParams.offset=0;
-     this.birthdayService.limitDefault=this.pageSize;
+     this.birthdayService.limitDefault=this.pageSize;     
     
   }
 

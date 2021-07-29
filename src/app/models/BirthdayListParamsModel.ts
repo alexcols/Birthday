@@ -1,8 +1,7 @@
 
 export interface BirthdayListParamsModel{
-    limit?: number,
-    offset?: number,    
-    searchName?: string,
-    id?:string
+    limit: number;
+    offset: number;
+    searchWord: string   
   
 }
