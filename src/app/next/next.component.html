@@ -5,7 +5,7 @@
         <div class="container">
 
             <!-- Number of birthdays -->
-            <div>
+            <div *ngIf="bdays.length !== 0 ">
                 <form [formGroup]="form" class="form-inline" (ngSubmit)="onKey()">
                     <label for="bdaysOnPage">Number of coming birthdays:</label>                    
                     <input class="form-control" 

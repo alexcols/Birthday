@@ -1,5 +1,6 @@
 <div class="container">
-    <div class="row">
+    <div *ngIf="collectionSize > 0"
+    class="row">
         <p class="page-selection">Number of birthdays on a page</p>
         <form [formGroup]="form" class="form-inline" (ngSubmit)="onKey()">
             <input class="form-control " size="2" formControlName="bDaysOnPage" type="text"  title="Number of birthdays on a page">
